@@ -8,5 +8,5 @@ def check_missing_value(df):
     return df_na
 def fill_missing_promote(df, cols):
     df_fill = df.copy()
-    df_fill = df_fill[cols].fillna(0)
+    df_fill[cols] = df_fill[cols].fillna(0)
     return df_fill
