@@ -1,3 +1,5 @@
+import pandas as pd
+
 def check_missing_value(df):
     df_na = pd.DataFrame({
         "counts": df.isna().sum(),
