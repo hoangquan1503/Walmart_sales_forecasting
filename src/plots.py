@@ -22,6 +22,6 @@ def plot_sales(df, store_id=1, dept_id=1):
             )
     ax.set_xlabel("Date")
     ax.set_ylabel("Sales")
-    ax.set_title("Store ID: {store_id} - Dept ID: {dept_id}")
+    ax.set_title(f"Store ID: {store_id} - Dept ID: {dept_id}")
     ax.legend()
     plt.show()
