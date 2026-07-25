@@ -16,7 +16,7 @@ def plot_sales(df, store_id=1, item_id=1):
         for date, sale in zip(nan_date, nan_sale):
             ax.annotate(
                 "-",
-                xy=(date, sales),
+                xy=(date, sale),
                 color="red",  # Set text color to red
                 size=20,
             )
