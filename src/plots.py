@@ -6,7 +6,7 @@ import seaborn as sns
 def plot_sales(df, store_id=1, dept_id=1):
     df_plot = df.copy()
     df_plot = df_plot[(df_plot['Store'] == store_id) & (df_plot['Dept'] == dept_id)]
-    fig, ax = plt.subplot(figsize=(8,4))
+    fig, ax = plt.subplots(figsize=(8,4))
     df_plot[["Date", "Weekly_Sales"]].plot(x="Date",y="Weekly_Sales", ax=ax, legend=True)
     nan_indice = df_plot[df_plot["Weekly_Sales"].isna()].index
     if len(nan_indice) >=1 :
