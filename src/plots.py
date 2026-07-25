@@ -3,12 +3,12 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 
-def plot_sales(df, store_id=1, item_id=1):
+def plot_sales(df, store_id=1, dept_id=1):
     df_plot = df.copy()
-    df_plot = df_plot.query("(store_id==@store_id)&(item_id==@item_id)")
+    df_plot = df_plot[(df_plot['Store'] == store_id) & (df_plot['Dept'] == dept_id)]
     fig, ax = plt.subplot(figsize=(8,4))
     df_plot[["Date", "Weekly_Sales"]].plot(x="Date",y="Weekly_Sales", ax=ax, legend=True)
-    nan_indice = df[df["Weekly_Sales"].isna()].index
+    nan_indice = df_plot[df_plot["Weekly_Sales"].isna()].index
     if len(nan_indice) >=1 :
         df_plot["Weekly_Sales"] = df_plot["Weekly_Sales"].fillna(method="ffill")
         nan_date = df_plot.loc[nan_indice, "Date"]
@@ -22,6 +22,6 @@ def plot_sales(df, store_id=1, item_id=1):
             )
     ax.set_xlabel("Date")
     ax.set_ylabel("Sales")
-    ax.set_title("Store ID: {store_id} - Item ID: {item_id}")
+    ax.set_title("Store ID: {store_id} - Dept ID: {dept_id}")
     ax.legend()
     plt.show()
