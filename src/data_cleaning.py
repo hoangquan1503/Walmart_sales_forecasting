@@ -16,5 +16,5 @@ def corrected_outlier(df, factor=3):
     df_corrected = df.copy()
     z_score = (df_corrected['Weekly_Sales'] - df_corrected['Weekly_Sales'].mean()) / df_corrected['Weekly_Sales'].std()
     outlier = z_score > factor
-    df_corrected.loc[outlier, 'Weekly_Sales'] = df_corrected.median()
+    df_corrected.loc[outlier, 'Weekly_Sales'] = df_corrected['Weekly_Sales'].median()
     return df_corrected
