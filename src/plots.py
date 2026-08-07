@@ -29,7 +29,7 @@ def plot_sales(df, store_id=1, dept_id=1):
 
 def visualize_pred(pred_dict):
     final_df = []
-    for store_dept, pred in pred_dict:
+    for store_dept, pred in pred_dict.items():
         pred = pred.copy()
         pred['store_dept'] = store_dept
         final_df.append(pred)
@@ -37,7 +37,7 @@ def visualize_pred(pred_dict):
 
 
 def plot_prophet_comparison(pred, store_dept):
-    df = pred[pred['store_dept'] == store_dept]
+    df = pred[pred['store_dept'].str.strip() == store_dept]
     if df.empty:
         print('No data to plot')
         return
