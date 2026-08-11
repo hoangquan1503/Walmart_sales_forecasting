@@ -58,8 +58,8 @@ def plot_sales_prediction(df_pred, store=1, nrows=6, ncols=5, figsize=(20,20)):
     Plots actual vs predicted sales for items in a given store.
 
     Parameters:
-        df_prediction (DataFrame): Must include ['Store', 'Dept', 'date', 'sales', 'prediction']
-        store_id (int): Store to filter on
+        df_prediction (DataFrame): Must include ['Store', 'Dept', 'Date', 'Weekly_Sales', 'pred']
+        store (int): Store to filter on
         nrows (int): Rows of subplots
         ncols (int): Columns of subplots
         figsize (tuple): Size of the full figure
@@ -91,8 +91,9 @@ def plot_sales_prediction(df_pred, store=1, nrows=6, ncols=5, figsize=(20,20)):
         ax.tick_params(axis='x', rotation=45)
         ax.grid(True)
         
-    handles, labels = axes[0].get_legend_handles_labels()
+    handles, labels = axes.flatten()[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", ncol=2, fontsize=12)
+    plt.tight_layout(rect=[0, 0, 1, 0.97])  # Leave space for the legend
     fig.suptitle(
         f"Sales Forecast vs Actual - Store {store}", fontsize=16, fontweight="bold"
     )
