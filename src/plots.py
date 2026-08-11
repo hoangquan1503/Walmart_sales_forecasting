@@ -53,6 +53,49 @@ def plot_prophet_comparison(pred, store_dept):
     plt.tight_layout()
     plt.show()
 
+def plot_sales_prediction(df_pred, store=1, nrows=6, ncols=5, figsize=(20,20)):
+    """
+    Plots actual vs predicted sales for items in a given store.
 
+    Parameters:
+        df_prediction (DataFrame): Must include ['Store', 'Dept', 'date', 'sales', 'prediction']
+        store_id (int): Store to filter on
+        nrows (int): Rows of subplots
+        ncols (int): Columns of subplots
+        figsize (tuple): Size of the full figure
+    """
     
+    sample_store = df_pred[df_pred['Store'] == store]
+    fig, axes = plt.subplots(nrows, ncols, figsize=figsize)
+    dept_list = df_pred['Dept'].unique()
+    
+    for idx, ax in enumerate(axes.flatten()):
+        if idx >= len(dept_list): #out of range, skip
+            ax.axis('off')
+            continue
+        
+        dept = dept_list[idx]
+        sample_dept = sample_store[sample_store['Dept'] == dept]
+        
+        # no data, skip
+        if sample_dept.empty:
+            ax.axis('off')
+            continue
+        
+        ax.plot(sample_dept['Date'], sample_dept['Weekly_Sales'], label='True', color='blue')
+        ax.plot(sample_dept['Date'], sample_dept['pred'], label='Prediction', color='red', linestyle='--', marker='.')
+        
+        ax.set_title(f'True vs Predict - store {store} dept {dept}')
+        ax.set_xlabel("Date")
+        ax.set_ylabel("Sales")
+        ax.tick_params(axis='x', rotation=45)
+        ax.grid(True)
+        
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper center", ncol=2, fontsize=12)
+    fig.suptitle(
+        f"Sales Forecast vs Actual - Store {store}", fontsize=16, fontweight="bold"
+    )
+    plt.show()
+        
     
