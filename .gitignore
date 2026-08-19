@@ -1,0 +1,115 @@
+# Python
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Jupyter Notebook
+
+.ipynb_checkpoints/
+
+# Jupyter temporary files
+.jupyter/
+
+# Data
+# Raw datasets
+data/
+dataset/
+datasets/
+
+*.csv
+*.csv.gz
+*.parquet
+*.feather
+*.pkl
+*.pickle
+
+# Large data files
+*.zip
+*.tar
+*.tar.gz
+
+# Machine Learning Models
+
+models/
+model/
+checkpoints/
+outputs/
+predictions/
+
+*.joblib
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.onnx
+
+# Prophet / CmdStan generated files
+*.stan
+*.hpp
+
+# Experiment / Cache
+
+.cache/
+cache/
+.mlflow/
+mlruns/
+optuna.db
+*.db
+
+# Logs
+
+logs/
+*.log
+
+# Environment / Secrets
+
+.env
+.env.*
+!.env.example
+
+# Google Colab
+*.ipynb_checkpoints/
+
+# Kaggle
+kaggle.json
+
+# OS
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code
+
+.vscode/
+*.code-workspace
+
+# Temporary files
+
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+~*
+
+# Generated figures
+
+# Uncomment the following if figures should NOT be tracked:
+# figures/generated/
